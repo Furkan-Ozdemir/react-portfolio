@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import "./base.css";
 
-const RecycleBin = () => {
+const MyProjects = () => {
   const [highlight, setHighlight] = useState(false);
 
   const handleHighlight = () => {
@@ -10,9 +9,8 @@ const RecycleBin = () => {
   };
   const unHighlight = () => {
     document.getElementById("resume").style.backgroundColor = "transparent";
-    document.getElementById("myProjects").style.backgroundColor = "transparent";
+    document.getElementById("trash").style.backgroundColor = "transparent";
   };
-
   return (
     <span
       style={
@@ -23,8 +21,8 @@ const RecycleBin = () => {
               alignItems: "center",
               width: "min-content",
               position: "relative",
-              top: "124px",
-              left: "240px",
+              top: "159px",
+              left: "610px",
               backgroundColor: "#59B1F1",
               cursor: "pointer",
             }
@@ -33,19 +31,19 @@ const RecycleBin = () => {
               flexDirection: "column",
               alignItems: "center",
               position: "relative",
-              top: "124px",
-              left: "240px",
+              top: "159px",
+              left: "610px",
               width: "min-content",
               cursor: "pointer",
             }
       }
-      id="trash"
+      id="myProjects"
       onClick={handleHighlight}
     >
-      <img src="/images/trash.png" alt="trash can" />
-      <span>Trash Can</span>
+      <img src="/images/mydocs.png" alt="my projects" />
+      <span>My Projects</span>
     </span>
   );
 };
 
-export default RecycleBin;
+export default MyProjects;

@@ -39,12 +39,12 @@ const Time = () => {
         }}
       >
         <img
-          style={{ width: 20, margin: "0 5px" }}
+          style={{ width: 20, margin: "0 5px", cursor: "pointer" }}
           src="/images/speakers.png"
           alt="speakers"
         />
         <img
-          style={{ width: 20 }}
+          style={{ width: 20, cursor: "pointer" }}
           src="/images/bluetooth.png"
           alt="bluetooth icon"
         />
@@ -52,6 +52,7 @@ const Time = () => {
       <span
         style={{
           padding: "0 15px",
+          cursor: "pointer",
         }}
       >
         {time}

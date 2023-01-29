@@ -11,6 +11,7 @@ const Image = (props) => {
     cursor: pointer;
     &:hover {
       background-color: #275199;
+      color: #fff;
     }
   `;
 

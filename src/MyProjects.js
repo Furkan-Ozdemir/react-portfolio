@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
-const MyProjects = () => {
+const MyProjects = (props) => {
+  const { setIsResume } = props;
   const [highlight, setHighlight] = useState(false);
 
   const handleHighlight = () => {
@@ -39,6 +40,9 @@ const MyProjects = () => {
       }
       id="myProjects"
       onClick={handleHighlight}
+      onContextMenu={(e) => {
+        setIsResume(e.currentTarget.id === "resume");
+      }}
     >
       <img src="/images/mydocs.png" alt="my projects" />
       <span>My Projects</span>

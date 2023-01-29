@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./base.css";
 
 const Resume = (props) => {
-  const { openInNewTab } = props;
+  const { openInNewTab, setIsResume } = props;
   const [highlight, setHighlight] = useState(false);
 
   const handleHighlight = () => {
@@ -51,6 +51,7 @@ const Resume = (props) => {
           200
         )
       }
+      onContextMenu={(e) => setIsResume(e.currentTarget.id === "resume")}
     >
       <img src="/images/image.png" alt="resume" />
       <span>Furkan Özdemir CV</span>

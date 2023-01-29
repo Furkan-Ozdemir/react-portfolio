@@ -9,6 +9,7 @@ const App = () => {
   const [xPos, setXPos] = useState("");
   const [yPos, setYPos] = useState("");
   const [showContextMenu, setShowContextMenu] = useState(false);
+  const [isResume, setIsResume] = useState(false); // TODO isDownloadable refactor later
 
   useEffect(() => {
     const handleContextmenu = (e) => {
@@ -38,11 +39,13 @@ const App = () => {
         e.preventDefault();
       }}
     >
-      <Resume openInNewTab={openInNewTab} />
-      <RecycleBin openInNewTab={openInNewTab} />
-      <MyProjects openInNewTab={openInNewTab} />
+      <Resume openInNewTab={openInNewTab} setIsResume={setIsResume} />
+      <RecycleBin openInNewTab={openInNewTab} setIsResume={setIsResume} />
+      <MyProjects openInNewTab={openInNewTab} setIsResume={setIsResume} />
       <Bar />
-      {showContextMenu && <ContextMenu xPos={xPos} yPos={yPos} />}
+      {showContextMenu && (
+        <ContextMenu isResume={isResume} xPos={xPos} yPos={yPos} />
+      )}
     </div>
   );
 };

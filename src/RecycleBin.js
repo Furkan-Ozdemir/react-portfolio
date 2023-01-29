@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./base.css";
 
-const RecycleBin = () => {
+const RecycleBin = (props) => {
+  const { setIsResume } = props;
   const [highlight, setHighlight] = useState(false);
 
   const handleHighlight = () => {
@@ -41,6 +42,9 @@ const RecycleBin = () => {
       }
       id="trash"
       onClick={handleHighlight}
+      onContextMenu={(e) => {
+        setIsResume(e.currentTarget.id === "resume");
+      }}
     >
       <img src="/images/trash.png" alt="trash can" />
       <span>Trash Can</span>

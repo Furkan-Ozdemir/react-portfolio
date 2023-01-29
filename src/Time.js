@@ -39,7 +39,7 @@ const Time = () => {
         }}
       >
         <img
-          style={{ width: 25, margin: "0 5px" }}
+          style={{ width: 20, margin: "0 5px" }}
           src="/images/speakers.png"
           alt="speakers"
         />

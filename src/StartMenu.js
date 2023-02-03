@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Menu from "./Menu";
 
-const StartMenu = () => {
+const StartMenu = (props) => {
+  const { openInNewTab } = props;
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   return (
     <>
@@ -11,7 +12,7 @@ const StartMenu = () => {
         alt="start menu"
         onClick={() => setIsMenuVisible(!isMenuVisible)}
       />
-      {isMenuVisible && <Menu />}
+      {isMenuVisible && <Menu openInNewTab={openInNewTab} />}
     </>
   );
 };

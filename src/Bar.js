@@ -2,7 +2,8 @@ import React from "react";
 import StartMenu from "./StartMenu";
 import Time from "./Time";
 
-const Bar = () => {
+const Bar = (props) => {
+  const { openInNewTab } = props;
   return (
     <div
       style={{
@@ -15,7 +16,7 @@ const Bar = () => {
         justifyContent: "space-between",
       }}
     >
-      <StartMenu />
+      <StartMenu openInNewTab={openInNewTab} />
       <Time />
     </div>
   );

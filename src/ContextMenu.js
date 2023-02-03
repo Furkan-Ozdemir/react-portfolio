@@ -11,6 +11,7 @@ const ContextMenu = (props) => {
     top: ${yPos};
     background-color: #fff;
     border: 1px solid #808080;
+    z-index: 9999;
   `;
 
   return (

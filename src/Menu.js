@@ -1,7 +1,12 @@
 import React from "react";
 import Image from "./Image";
 
-const Menu = () => {
+const Menu = (props) => {
+  const { openInNewTab } = props;
+  const openGoogle = () => {
+    window.open("https://google.com", "_blank", "noreferrer");
+  };
+
   return (
     <div
       style={{
@@ -24,12 +29,16 @@ const Menu = () => {
       </div>
       <div style={{ display: "flex" }}>
         <div style={{ backgroundColor: "#fff" }}>
-          <Image
-            src="/images/iexplorer.png"
-            alt="internet explorer"
-            text="Internet Explorer"
-          />
-          <Image src="/images/email.png" alt="email" text="E-mail" />
+          <div onClick={openGoogle}>
+            <Image
+              src="/images/iexplorer.png"
+              alt="internet explorer"
+              text="Internet Explorer"
+            />
+          </div>
+          <div>
+            <Image src="/images/email.png" alt="email" text="E-mail" />
+          </div>
           <hr />
           <Image
             src="/images/mediaplayer.png"

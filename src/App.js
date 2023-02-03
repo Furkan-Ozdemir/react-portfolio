@@ -4,6 +4,7 @@ import RecycleBin from "./RecycleBin";
 import Resume from "./Resume";
 import MyProjects from "./MyProjects";
 import ContextMenu from "./ContextMenu";
+import Folder from "./Folder";
 
 const App = () => {
   const [xPos, setXPos] = useState("");
@@ -39,10 +40,11 @@ const App = () => {
         e.preventDefault();
       }}
     >
+      <Folder />
       <Resume openInNewTab={openInNewTab} setIsResume={setIsResume} />
       <RecycleBin openInNewTab={openInNewTab} setIsResume={setIsResume} />
       <MyProjects openInNewTab={openInNewTab} setIsResume={setIsResume} />
-      <Bar />
+      <Bar openInNewTab={openInNewTab} />
       {showContextMenu && (
         <ContextMenu isResume={isResume} xPos={xPos} yPos={yPos} />
       )}

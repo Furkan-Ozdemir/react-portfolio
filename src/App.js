@@ -32,6 +32,8 @@ const App = () => {
     );
     if (newWindow) newWindow.opener = null;
   };
+  const showFolder = () =>
+    (document.getElementById("folder").style.display = "block");
 
   return (
     <div
@@ -40,10 +42,14 @@ const App = () => {
         e.preventDefault();
       }}
     >
-      <Folder />
+      <Folder setIsResume={setIsResume} />
       <Resume openInNewTab={openInNewTab} setIsResume={setIsResume} />
       <RecycleBin openInNewTab={openInNewTab} setIsResume={setIsResume} />
-      <MyProjects openInNewTab={openInNewTab} setIsResume={setIsResume} />
+      <MyProjects
+        showFolder={showFolder}
+        openInNewTab={openInNewTab}
+        setIsResume={setIsResume}
+      />
       <Bar openInNewTab={openInNewTab} />
       {showContextMenu && (
         <ContextMenu isResume={isResume} xPos={xPos} yPos={yPos} />

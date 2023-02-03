@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import ProjectItem from "./ProjectItem";
 
 const Folder = (props) => {
-  const { title } = props;
+  const { title, setIsResume } = props;
   const FolderWrapper = styled.div`
+    display: none;
     height: 600px;
-    width: 800px;
+    width: 850px;
     border: 3px solid #005bf2;
     position: absolute;
     left: 0;
@@ -75,6 +77,14 @@ const Folder = (props) => {
   `;
   const WhiteSpace = styled.div`
     background-color: #fff;
+    display: grid;
+    grid-template-columns: repeat(3, 180px);
+    grid-template-rows: repeat(auto-fill, 100px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    & span {
+      margin: 10px;
+    }
   `;
   const MainWrapper = styled.div`
     display: flex;
@@ -89,7 +99,7 @@ const Folder = (props) => {
             src="/images/mydocs.png"
             alt="folder icon"
           />
-          <span style={{ color: "#fff", paddingLeft: "5px" }}>asfsaf</span>
+          <span style={{ color: "#fff", paddingLeft: "5px" }}>My Projects</span>
         </div>
         <img
           style={{
@@ -334,7 +344,33 @@ const Folder = (props) => {
             </div>
           </div>
         </FileandFolderBar>
-        <WhiteSpace>iconlar</WhiteSpace>
+        <WhiteSpace>
+          <ProjectItem
+            setIsResume={setIsResume}
+            projectName="Recrute.It"
+            repoName="recrute.it"
+            id="recrute"
+          />
+          <ProjectItem
+            setIsResume={setIsResume}
+            projectName="React TODO"
+            repoName="react-todo"
+            id="todo"
+          />
+          <ProjectItem
+            setIsResume={setIsResume}
+            projectName="full stack calendar"
+            repoName="calendar"
+            id="calendar"
+          />
+
+          <ProjectItem
+            setIsResume={setIsResume}
+            projectName="dynamic-programming with java"
+            repoName="dynamic-programming"
+            id="dynamicProgramming"
+          />
+        </WhiteSpace>
       </MainWrapper>
     </FolderWrapper>
   );

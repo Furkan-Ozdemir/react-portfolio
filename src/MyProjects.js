@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const MyProjects = (props) => {
-  const { setIsResume } = props;
+  const { setIsResume, showFolder } = props;
   const [highlight, setHighlight] = useState(false);
 
   const handleHighlight = () => {
@@ -43,6 +43,7 @@ const MyProjects = (props) => {
       onContextMenu={(e) => {
         setIsResume(e.currentTarget.id === "resume");
       }}
+      onDoubleClick={showFolder}
     >
       <img src="/images/mydocs.png" alt="my projects" />
       <span>My Projects</span>

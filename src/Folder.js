@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Image from "./Image";
 
 const Folder = (props) => {
   const { title } = props;
@@ -34,7 +33,7 @@ const Folder = (props) => {
     padding: 7px;
     & > * {
       margin-right: 15px;
-
+      padding: 5px;
       cursor: pointer;
 
       &:hover {
@@ -49,18 +48,37 @@ const Folder = (props) => {
     & > * {
       margin-right: 15px;
     }
+    .navigation_bar_img:hover {
+      cursor: pointer;
+    }
+    .navigation_bar_img:hover ~ span {
+      background-color: #275199;
+      color: #fff;
+    }
+    .navigation_bar_img + span:hover {
+      background-color: #275199;
+      color: #fff;
+      cursor: pointer;
+    }
   `;
   const FileandFolderBar = styled.div`
     background-color: #7292e0;
     display: flex;
     flex-direction: column;
+    & > * {
+      cursor: pointer;
+    }
+    .FileandFolderBar_title:hover,
+    .FileandFolderBar_text:hover {
+      text-decoration-line: underline;
+    }
   `;
   const WhiteSpace = styled.div`
     background-color: #fff;
   `;
   const MainWrapper = styled.div`
     display: flex;
-    height: 455px;
+    height: 446px;
   `;
   return (
     <FolderWrapper id="folder">
@@ -111,6 +129,7 @@ const Folder = (props) => {
             }}
             src="/images/back_button.png"
             alt="back button"
+            class="navigation_bar_img"
           />
           <span>Back</span>
         </div>
@@ -129,6 +148,7 @@ const Folder = (props) => {
             }}
             src="/images/back_button.png"
             alt="forward button"
+            class="navigation_bar_img"
           />
           <span>Forward</span>
         </div>
@@ -148,6 +168,7 @@ const Folder = (props) => {
             }}
             src="/images/searchIcon.png"
             alt="search button"
+            class="navigation_bar_img"
           />
           <span>Search</span>
         </div>
@@ -166,6 +187,7 @@ const Folder = (props) => {
             }}
             src="/images/mydocs.png"
             alt="folders"
+            class="navigation_bar_img"
           />
           <span>Folders</span>
         </div>
@@ -191,6 +213,7 @@ const Folder = (props) => {
                 padding: "5px",
                 marginBottom: "15px",
               }}
+              class="FileandFolderBar_title"
             >
               Other Places
             </div>
@@ -205,8 +228,9 @@ const Folder = (props) => {
                 src="/images/mycomputer.png"
                 alt="my computer"
                 style={{ width: "24px", marginRight: "10px" }}
+                class="FileandFolderBar_img"
               />
-              <span>My Computer</span>
+              <span class="FileandFolderBar_text">My Computer</span>
             </div>
             <div
               style={{
@@ -219,8 +243,9 @@ const Folder = (props) => {
                 src="/images/mydocs.png"
                 alt="Shared Computer"
                 style={{ width: "24px", marginRight: "10px" }}
+                class="FileandFolderBar_img"
               />
-              <span>Shared Computer</span>
+              <span class="FileandFolderBar_text">Shared Computer</span>
             </div>
             <div
               style={{
@@ -233,8 +258,9 @@ const Folder = (props) => {
                 src="/images/network.png"
                 alt="network"
                 style={{ width: "24px", marginRight: "10px" }}
+                class="FileandFolderBar_img"
               />
-              <span>My Network Places</span>
+              <span class="FileandFolderBar_text">My Network Places</span>
             </div>
           </div>
           <div
@@ -255,6 +281,7 @@ const Folder = (props) => {
                 padding: "5px",
                 marginBottom: "15px",
               }}
+              class="FileandFolderBar_title"
             >
               File and Folder Tasks
             </div>
@@ -269,8 +296,11 @@ const Folder = (props) => {
                 src="/images/publishToWorld.png"
                 alt="my computer"
                 style={{ width: "24px", marginRight: "10px" }}
+                class="FileandFolderBar_img"
               />
-              <span>Publish this folder to the Web</span>
+              <span class="FileandFolderBar_text">
+                Publish this folder to the Web
+              </span>
             </div>
             <div
               style={{
@@ -283,8 +313,9 @@ const Folder = (props) => {
                 src="/images/searchFile.png"
                 alt="Search a File"
                 style={{ width: "24px", marginRight: "10px" }}
+                class="FileandFolderBar_img"
               />
-              <span>Search a File</span>
+              <span class="FileandFolderBar_text">Search a File</span>
             </div>
             <div
               style={{
@@ -297,8 +328,9 @@ const Folder = (props) => {
                 src="/images/mydocs.png"
                 alt="new folder"
                 style={{ width: "24px", marginRight: "10px" }}
+                class="FileandFolderBar_img"
               />
-              <span>Make a New Folder</span>
+              <span class="FileandFolderBar_text">Make a New Folder</span>
             </div>
           </div>
         </FileandFolderBar>

@@ -6,6 +6,9 @@ const Email = (props) => {
   const { title, setIsResume } = props;
   const [fontFamily, setFontFamily] = useState("Serif");
   const [textAreaState, setTextAreaText] = useState("");
+  const [fromEmail, setFromEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [fontSize, setFontSize] = useState("20px");
 
   const handleFontFamily = (e) => {
     setFontFamily(e.currentTarget.value);
@@ -152,6 +155,8 @@ const Email = (props) => {
                 style={{ marginLeft: "15px" }}
                 required
                 type="email"
+                value={fromEmail}
+                onChange={(e) => setFromEmail(e.target.value)}
               ></input>
             </EmailItem>
             <EmailItem>
@@ -165,7 +170,12 @@ const Email = (props) => {
             </EmailItem>
             <EmailItem>
               <span>Subject:</span>
-              <input type="text" required></input>
+              <input
+                type="text"
+                value={subject}
+                onChange={(e) => setSubject(e.target.value)}
+                required
+              ></input>
             </EmailItem>
           </form>
         </EmailHeader>
@@ -189,11 +199,16 @@ const Email = (props) => {
               Fantasy
             </option>
           </select>
-          <select id="fontSize" style={{ margin: "5px" }}>
-            <option value="10">10</option>
-            <option value="15">15</option>
-            <option value="20">20</option>
-            <option value="25">25</option>
+          <select
+            value={fontSize}
+            onChange={(e) => setFontSize(e.target.value)}
+            id="fontSize"
+            style={{ margin: "5px" }}
+          >
+            <option value="10px">10</option>
+            <option value="15px">15</option>
+            <option value="20px">20</option>
+            <option value="25px">25</option>
           </select>
           <span
             style={{ borderLeft: "1px solid #a9a9a9", margin: "0 15px" }}
@@ -240,7 +255,7 @@ const Email = (props) => {
           id="emailTextArea"
           type="text"
           name="emailTextArea"
-          style={{ fontFamily: fontFamily, fontSize: "15px" }}
+          style={{ fontFamily: fontFamily, fontSize: fontSize }}
           value={textAreaState}
           onChange={(e) => setTextAreaText(e.target.value)}
         />

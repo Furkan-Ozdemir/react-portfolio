@@ -9,6 +9,10 @@ const Email = (props) => {
   const [fromEmail, setFromEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [fontSize, setFontSize] = useState("20px");
+  const [fontStyle, setFontStyle] = useState(false);
+  const [fontWeight, setFontWeight] = useState(false);
+  const [textDecoration, setTextDecoration] = useState(false);
+  const [textAlign, setTextAlign] = useState("left");
 
   const handleFontFamily = (e) => {
     setFontFamily(e.currentTarget.value);
@@ -219,16 +223,19 @@ const Email = (props) => {
               src="/images/boldIcon.png"
               style={{ width: "13px", cursor: "pointer " }}
               alt=""
+              onClick={() => setFontWeight(!fontWeight)}
             />
             <img
               src="/images/italic.png"
               style={{ width: "13px", cursor: "pointer " }}
               alt=""
+              onClick={() => setFontStyle(!fontStyle)}
             />
             <img
               src="/images/underline.png"
               style={{ width: "13px", cursor: "pointer " }}
               alt=""
+              onClick={() => setTextDecoration(!textDecoration)}
             />
             <span
               style={{ borderLeft: "1px solid #a9a9a9", margin: "0 15px" }}
@@ -237,16 +244,19 @@ const Email = (props) => {
               src="/images/left-align.png"
               style={{ width: "13px", cursor: "pointer " }}
               alt=""
+              onClick={() => setTextAlign("left")}
             />
             <img
               src="/images/right-align.png"
               style={{ width: "13px", cursor: "pointer " }}
               alt=""
+              onClick={() => setTextAlign("right")}
             />
             <img
               src="/images/center-align.png"
               style={{ width: "13px", cursor: "pointer " }}
               alt=""
+              onClick={() => setTextAlign("center")}
             />
           </TextAreaHeaderIcons>
         </TextAreaHeader>
@@ -255,7 +265,14 @@ const Email = (props) => {
           id="emailTextArea"
           type="text"
           name="emailTextArea"
-          style={{ fontFamily: fontFamily, fontSize: fontSize }}
+          style={{
+            fontFamily: fontFamily,
+            fontSize: fontSize,
+            fontStyle: fontStyle ? "italic" : "normal",
+            fontWeight: fontWeight ? "bold" : "normal",
+            textDecoration: textDecoration ? "underline" : "none",
+            textAlign: textAlign,
+          }}
           value={textAreaState}
           onChange={(e) => setTextAreaText(e.target.value)}
         />
@@ -363,6 +380,9 @@ const TextAreaHeader = styled.div`
 const TextAreaHeaderIcons = styled.span`
   * {
     margin: 0 10px;
+  }
+  & img:hover {
+    box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.5);
   }
 `;
 

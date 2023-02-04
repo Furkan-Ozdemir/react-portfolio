@@ -5,6 +5,7 @@ import Resume from "./Resume";
 import MyProjects from "./MyProjects";
 import ContextMenu from "./ContextMenu";
 import Folder from "./Folder";
+import Email from "./Email";
 
 const App = () => {
   const [xPos, setXPos] = useState("");
@@ -42,6 +43,7 @@ const App = () => {
         e.preventDefault();
       }}
     >
+      <Email setIsResume={setIsResume} />
       <Folder setIsResume={setIsResume} />
       <Resume openInNewTab={openInNewTab} setIsResume={setIsResume} />
       <RecycleBin openInNewTab={openInNewTab} setIsResume={setIsResume} />

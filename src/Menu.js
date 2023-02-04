@@ -36,7 +36,11 @@ const Menu = (props) => {
               text="Internet Explorer"
             />
           </div>
-          <div>
+          <div
+            onClick={() =>
+              (document.getElementById("email").style.display = "block")
+            }
+          >
             <Image src="/images/email.png" alt="email" text="E-mail" />
           </div>
           <hr />

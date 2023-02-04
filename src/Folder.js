@@ -139,7 +139,7 @@ const Folder = (props) => {
             }}
             src="/images/back_button.png"
             alt="back button"
-            class="navigation_bar_img"
+            className="navigation_bar_img"
           />
           <span>Back</span>
         </div>
@@ -158,7 +158,7 @@ const Folder = (props) => {
             }}
             src="/images/back_button.png"
             alt="forward button"
-            class="navigation_bar_img"
+            className="navigation_bar_img"
           />
           <span>Forward</span>
         </div>
@@ -178,7 +178,7 @@ const Folder = (props) => {
             }}
             src="/images/searchIcon.png"
             alt="search button"
-            class="navigation_bar_img"
+            className="navigation_bar_img"
           />
           <span>Search</span>
         </div>
@@ -197,7 +197,7 @@ const Folder = (props) => {
             }}
             src="/images/mydocs.png"
             alt="folders"
-            class="navigation_bar_img"
+            className="navigation_bar_img"
           />
           <span>Folders</span>
         </div>
@@ -223,7 +223,7 @@ const Folder = (props) => {
                 padding: "5px",
                 marginBottom: "15px",
               }}
-              class="FileandFolderBar_title"
+              className="FileandFolderBar_title"
             >
               Other Places
             </div>
@@ -238,9 +238,9 @@ const Folder = (props) => {
                 src="/images/mycomputer.png"
                 alt="my computer"
                 style={{ width: "24px", marginRight: "10px" }}
-                class="FileandFolderBar_img"
+                className="FileandFolderBar_img"
               />
-              <span class="FileandFolderBar_text">My Computer</span>
+              <span className="FileandFolderBar_text">My Computer</span>
             </div>
             <div
               style={{
@@ -253,9 +253,9 @@ const Folder = (props) => {
                 src="/images/mydocs.png"
                 alt="Shared Computer"
                 style={{ width: "24px", marginRight: "10px" }}
-                class="FileandFolderBar_img"
+                className="FileandFolderBar_img"
               />
-              <span class="FileandFolderBar_text">Shared Computer</span>
+              <span className="FileandFolderBar_text">Shared Computer</span>
             </div>
             <div
               style={{
@@ -268,9 +268,9 @@ const Folder = (props) => {
                 src="/images/network.png"
                 alt="network"
                 style={{ width: "24px", marginRight: "10px" }}
-                class="FileandFolderBar_img"
+                className="FileandFolderBar_img"
               />
-              <span class="FileandFolderBar_text">My Network Places</span>
+              <span className="FileandFolderBar_text">My Network Places</span>
             </div>
           </div>
           <div
@@ -291,7 +291,7 @@ const Folder = (props) => {
                 padding: "5px",
                 marginBottom: "15px",
               }}
-              class="FileandFolderBar_title"
+              className="FileandFolderBar_title"
             >
               File and Folder Tasks
             </div>
@@ -306,9 +306,9 @@ const Folder = (props) => {
                 src="/images/publishToWorld.png"
                 alt="my computer"
                 style={{ width: "24px", marginRight: "10px" }}
-                class="FileandFolderBar_img"
+                className="FileandFolderBar_img"
               />
-              <span class="FileandFolderBar_text">
+              <span className="FileandFolderBar_text">
                 Publish this folder to the Web
               </span>
             </div>
@@ -323,9 +323,9 @@ const Folder = (props) => {
                 src="/images/searchFile.png"
                 alt="Search a File"
                 style={{ width: "24px", marginRight: "10px" }}
-                class="FileandFolderBar_img"
+                className="FileandFolderBar_img"
               />
-              <span class="FileandFolderBar_text">Search a File</span>
+              <span className="FileandFolderBar_text">Search a File</span>
             </div>
             <div
               style={{
@@ -338,9 +338,9 @@ const Folder = (props) => {
                 src="/images/mydocs.png"
                 alt="new folder"
                 style={{ width: "24px", marginRight: "10px" }}
-                class="FileandFolderBar_img"
+                className="FileandFolderBar_img"
               />
-              <span class="FileandFolderBar_text">Make a New Folder</span>
+              <span className="FileandFolderBar_text">Make a New Folder</span>
             </div>
           </div>
         </FileandFolderBar>

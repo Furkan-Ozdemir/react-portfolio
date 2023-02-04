@@ -3,33 +3,8 @@ import Image from "./Image";
 import styled from "styled-components";
 
 const ContextMenuItem = ({ isResume }) => {
-  const ContextMenuItem = styled.div`
-    display: flex;
-    width: 230px;
-  `;
-  const UnorderedListItem = styled.li`
-    list-style: none;
-    width: 100%;
-    padding: 7px;
-    padding-left: 35px;
-    &:hover {
-      background-color: #275199;
-      color: #fff;
-    }
-    &[data-disabled="true"] {
-      pointer-events: none;
-      opacity: 0.6;
-    }
-    &[data-exception="winrar"] {
-      padding: 0px;
-    }
-  `;
-  const UnorderedList = styled.ul`
-    width: 100%;
-  `;
-
   return (
-    <ContextMenuItem>
+    <ContextMenuItemWrapper>
       <UnorderedList>
         {isResume && (
           <UnorderedListItem>
@@ -70,8 +45,32 @@ const ContextMenuItem = ({ isResume }) => {
         <UnorderedListItem>New</UnorderedListItem>
         <UnorderedListItem>Properties</UnorderedListItem>
       </UnorderedList>
-    </ContextMenuItem>
+    </ContextMenuItemWrapper>
   );
 };
+const ContextMenuItemWrapper = styled.div`
+  display: flex;
+  width: 230px;
+`;
+const UnorderedListItem = styled.li`
+  list-style: none;
+  width: 100%;
+  padding: 7px;
+  padding-left: 35px;
+  &:hover {
+    background-color: #275199;
+    color: #fff;
+  }
+  &[data-disabled="true"] {
+    pointer-events: none;
+    opacity: 0.6;
+  }
+  &[data-exception="winrar"] {
+    padding: 0px;
+  }
+`;
+const UnorderedList = styled.ul`
+  width: 100%;
+`;
 
 export default ContextMenuItem;

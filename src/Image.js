@@ -4,17 +4,6 @@ import styled from "styled-components";
 const Image = (props) => {
   const { src, alt, text, textColor } = props;
 
-  const Container = styled.div`
-    display: flex;
-    align-items: center;
-    color: ${textColor};
-    cursor: pointer;
-    &:hover {
-      background-color: #275199;
-      color: #fff;
-    }
-  `;
-
   return (
     <Container>
       <img src={src} alt={alt} style={{ padding: "10px" }} />
@@ -22,5 +11,16 @@ const Image = (props) => {
     </Container>
   );
 };
+
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  color: ${(props) => props.textColor};
+  cursor: pointer;
+  &:hover {
+    background-color: #275199;
+    color: #fff;
+  }
+`;
 
 export default Image;

@@ -7,109 +7,6 @@ const Email = (props) => {
   const [fontFamily, setFontFamily] = useState("Serif");
   const [textAreaState, setTextAreaText] = useState("");
 
-  const FolderWrapper = styled.div`
-    display: block;
-    height: 600px;
-    width: 850px;
-    border: 3px solid #005bf2;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    z-index: 100;
-    border-radius: 3px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  `;
-
-  const TitleBar = styled.div`
-    height: 30px;
-    background-color: #005bf2;
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 5px;
-  `;
-
-  const MenuBar = styled.div`
-    display: flex;
-    background-color: #efedd8;
-    border-bottom: 1px solid #a9a9a9;
-    padding: 7px;
-    & > * {
-      margin-right: 15px;
-      padding: 5px;
-      cursor: pointer;
-
-      &:hover {
-        background-color: #fff;
-      }
-    }
-  `;
-  const NavigationBar = styled.div`
-    background-color: #efedd8;
-    display: flex;
-
-    & > * {
-      margin-right: 15px;
-    }
-    .navigation_bar_img:hover {
-      cursor: pointer;
-    }
-    .navigation_bar_img:hover ~ span {
-      background-color: #275199;
-      color: #fff;
-    }
-    .navigation_bar_img + span:hover {
-      background-color: #275199;
-      color: #fff;
-      cursor: pointer;
-    }
-  `;
-  const FileandFolderBar = styled.div`
-    background-color: #7292e0;
-    display: flex;
-    flex-direction: column;
-    & > * {
-      cursor: pointer;
-    }
-    .FileandFolderBar_title:hover,
-    .FileandFolderBar_text:hover {
-      text-decoration-line: underline;
-    }
-  `;
-  const EmailHeader = styled.div`
-    background-color: #efedd8;
-  `;
-  const EmaiWrapper = styled.div``;
-  const EmailItem = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
-    width: 100%;
-    & input {
-      padding: 2px;
-      flex: 1;
-    }
-  `;
-  const EmailTextArea = styled.textarea`
-    resize: none;
-    width: 100%;
-    height: 315px;
-    overflow-y: scroll;
-    padding: 10px;
-  `;
-  const TextAreaHeader = styled.div`
-    background-color: #efedd8;
-    padding-left: 5px;
-  `;
-  const TextAreaHeaderIcons = styled.span`
-    * {
-      margin: 0 10px;
-    }
-  `;
-
   const handleFontFamily = (e) => {
     setFontFamily(e.currentTarget.value);
   };
@@ -351,5 +248,107 @@ const Email = (props) => {
     </FolderWrapper>
   );
 };
+const FolderWrapper = styled.div`
+  display: block;
+  height: 600px;
+  width: 850px;
+  border: 3px solid #005bf2;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 100;
+  border-radius: 3px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+`;
+const TitleBar = styled.div`
+  height: 30px;
+  background-color: #005bf2;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 5px;
+`;
+
+const MenuBar = styled.div`
+  display: flex;
+  background-color: #efedd8;
+  border-bottom: 1px solid #a9a9a9;
+  padding: 7px;
+  & > * {
+    margin-right: 15px;
+    padding: 5px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #fff;
+    }
+  }
+`;
+const NavigationBar = styled.div`
+  background-color: #efedd8;
+  display: flex;
+
+  & > * {
+    margin-right: 15px;
+  }
+  .navigation_bar_img:hover {
+    cursor: pointer;
+  }
+  .navigation_bar_img:hover ~ span {
+    background-color: #275199;
+    color: #fff;
+  }
+  .navigation_bar_img + span:hover {
+    background-color: #275199;
+    color: #fff;
+    cursor: pointer;
+  }
+`;
+
+const FileandFolderBar = styled.div`
+  background-color: #7292e0;
+  display: flex;
+  flex-direction: column;
+  & > * {
+    cursor: pointer;
+  }
+  .FileandFolderBar_title:hover,
+  .FileandFolderBar_text:hover {
+    text-decoration-line: underline;
+  }
+`;
+const EmailHeader = styled.div`
+  background-color: #efedd8;
+`;
+const EmaiWrapper = styled.div``;
+const EmailItem = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  width: 100%;
+  & input {
+    padding: 2px;
+    flex: 1;
+  }
+`;
+const EmailTextArea = styled.textarea`
+  resize: none;
+  width: 100%;
+  height: 315px;
+  overflow-y: scroll;
+  padding: 10px;
+`;
+const TextAreaHeader = styled.div`
+  background-color: #efedd8;
+  padding-left: 5px;
+`;
+const TextAreaHeaderIcons = styled.span`
+  * {
+    margin: 0 10px;
+  }
+`;
 
 export default Email;

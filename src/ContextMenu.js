@@ -7,6 +7,8 @@ const ContextMenu = (props) => {
 
   return (
     <ContextWrapper
+      xPos={xPos}
+      yPos={yPos}
       onContextMenu={(e) => {
         e.preventDefault();
         console.log(xPos, yPos);
@@ -16,7 +18,6 @@ const ContextMenu = (props) => {
     </ContextWrapper>
   );
 };
-
 const ContextWrapper = styled.div`
   position: absolute;
   left: ${(props) => props.xPos};

@@ -12,6 +12,11 @@ const App = () => {
   const [yPos, setYPos] = useState("");
   const [showContextMenu, setShowContextMenu] = useState(false);
   const [isResume, setIsResume] = useState(false); // TODO isDownloadable refactor later
+  const [locationData, setLocationData] = useState({});
+
+  useEffect(() => {
+    getLocationData();
+  }, []);
 
   useEffect(() => {
     const handleContextmenu = (e) => {
@@ -36,6 +41,14 @@ const App = () => {
   const showFolder = () =>
     (document.getElementById("folder").style.display = "block");
 
+  const getLocationData = async () => {
+    try {
+      const response = await fetch("https://geolocation-db.com/json/");
+      const data = await response.json();
+      setLocationData(data);
+    } catch (error) {}
+  };
+
   return (
     <div
       className="app"
@@ -43,7 +56,7 @@ const App = () => {
         e.preventDefault();
       }}
     >
-      <Email setIsResume={setIsResume} />
+      <Email locationData={locationData} setIsResume={setIsResume} />
       <Folder setIsResume={setIsResume} />
       <Resume openInNewTab={openInNewTab} setIsResume={setIsResume} />
       <RecycleBin openInNewTab={openInNewTab} setIsResume={setIsResume} />

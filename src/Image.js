@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Image = (props) => {
-  const { src, alt, text, textColor } = props;
+  const { src, alt, text } = props;
 
   return (
     <Container>
@@ -15,7 +15,6 @@ const Image = (props) => {
 const Container = styled.div`
   display: flex;
   align-items: center;
-  color: ${(props) => props.textColor};
   cursor: pointer;
   &:hover {
     background-color: #275199;

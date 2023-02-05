@@ -3,7 +3,7 @@ import styled from "styled-components";
 import ProjectItem from "./ProjectItem";
 
 const Folder = (props) => {
-  const { title, setIsResume } = props;
+  const { setIsResume } = props;
 
   return (
     <FolderWrapper id="folder">

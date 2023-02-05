@@ -2,7 +2,6 @@ import React from "react";
 import Image from "./Image";
 
 const Menu = (props) => {
-  const { openInNewTab } = props;
   const openGoogle = () => {
     window.open("https://google.com", "_blank", "noreferrer");
   };

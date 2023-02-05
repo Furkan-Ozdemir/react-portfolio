@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import ProjectItem from "./ProjectItem";
+import InfoBox from "./InfoBox";
 
 const Email = (props) => {
-  const { title, setIsResume } = props;
   const [fontFamily, setFontFamily] = useState("Serif");
   const [textAreaState, setTextAreaText] = useState("");
   const [fromEmail, setFromEmail] = useState("");
@@ -13,13 +12,73 @@ const Email = (props) => {
   const [fontWeight, setFontWeight] = useState(false);
   const [textDecoration, setTextDecoration] = useState(false);
   const [textAlign, setTextAlign] = useState("left");
+  const { timeZone } = Intl.DateTimeFormat().resolvedOptions();
+  const { locationData } = props;
+  const [isEmailSent, setIsEmailSent] = useState(false);
+  const [infoBoxVisible, setInfoBoxVisible] = useState(false);
 
   const handleFontFamily = (e) => {
     setFontFamily(e.currentTarget.value);
   };
+  const resetValues = () => {
+    setTextAreaText("");
+    setFromEmail("");
+    setSubject("");
+    return true;
+  };
+
+  const isValidEmail = (email) => {
+    const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return re.test(email);
+  };
+  const sendRequest = async () => {
+    const isValid = isValidEmail(fromEmail);
+    if (!isValid) {
+      setInfoBoxVisible(true);
+      setIsEmailSent(false);
+      return;
+    }
+    if (!fromEmail || !subject || !textAreaState) {
+      setInfoBoxVisible(true);
+      setIsEmailSent(false);
+      return;
+    }
+    const response = await fetch(
+      `https://api.jotform.com/form/230354920382957/submissions?apiKey=${process.env.REACT_APP_API_KEY}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body:
+          "submission[3]=" +
+          fromEmail +
+          "&submission[5]=" +
+          subject +
+          "&submission[6]=" +
+          textAreaState +
+          "&submission[7]=" +
+          timeZone +
+          "&submission[10]=" +
+          locationData.IPv4 +
+          "&submission[11]=" +
+          locationData.city +
+          "&submission[12]=" +
+          locationData.state +
+          "&submission[13]=" +
+          locationData.country_name,
+      }
+    );
+    setIsEmailSent(response.status === 200);
+    const valuesCleared = response.status === 200 ? resetValues() : false;
+    setInfoBoxVisible(true);
+  };
 
   return (
     <FolderWrapper id="email">
+      {infoBoxVisible && (
+        <InfoBox setInfoBoxVisible={setInfoBoxVisible} isSucces={isEmailSent} />
+      )}
       <TitleBar>
         <div style={{ display: "flex", alignItems: "center" }}>
           <img
@@ -136,6 +195,9 @@ const Email = (props) => {
             flexDirection: "column",
             padding: "10px",
           }}
+          onClick={() => {
+            sendRequest();
+          }}
         >
           <img
             style={{
@@ -152,13 +214,14 @@ const Email = (props) => {
       </NavigationBar>
       <EmaiWrapper>
         <EmailHeader>
-          <form>
+          <form id="myForm" onSubmit={(e) => e.preventDefault()}>
             <EmailItem>
               <span>From:</span>
               <input
                 style={{ marginLeft: "15px" }}
                 required
                 type="email"
+                name="fromEmail"
                 value={fromEmail}
                 onChange={(e) => setFromEmail(e.target.value)}
               ></input>
@@ -169,6 +232,7 @@ const Email = (props) => {
                 style={{ marginLeft: "35px", cursor: "not-allowed" }}
                 disabled
                 placeholder="me"
+                name="toEmail"
                 type="email"
               ></input>
             </EmailItem>
@@ -177,6 +241,7 @@ const Email = (props) => {
               <input
                 type="text"
                 value={subject}
+                name="subject"
                 onChange={(e) => setSubject(e.target.value)}
                 required
               ></input>
@@ -265,6 +330,7 @@ const Email = (props) => {
           id="emailTextArea"
           type="text"
           name="emailTextArea"
+          form="myForm"
           style={{
             fontFamily: fontFamily,
             fontSize: fontSize,
@@ -281,7 +347,7 @@ const Email = (props) => {
   );
 };
 const FolderWrapper = styled.div`
-  display: block;
+  display: none;
   height: 600px;
   width: 850px;
   border: 3px solid #005bf2;
@@ -339,18 +405,6 @@ const NavigationBar = styled.div`
   }
 `;
 
-const FileandFolderBar = styled.div`
-  background-color: #7292e0;
-  display: flex;
-  flex-direction: column;
-  & > * {
-    cursor: pointer;
-  }
-  .FileandFolderBar_title:hover,
-  .FileandFolderBar_text:hover {
-    text-decoration-line: underline;
-  }
-`;
 const EmailHeader = styled.div`
   background-color: #efedd8;
 `;

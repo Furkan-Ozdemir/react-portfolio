@@ -3,7 +3,8 @@ import styled from "styled-components";
 import Image from "./Image";
 
 const InfoBox = (props) => {
-  const { isSucces, setInfoBoxVisible } = props;
+  const { isSucces, setInfoBoxVisible, isLoading } = props;
+
   return (
     <FolderWrapper id="infoBox">
       <TitleBar>
@@ -30,19 +31,24 @@ const InfoBox = (props) => {
       </TitleBar>
       <InfoBoxContent>
         <NoHover>
-          <Image
-            src={
-              isSucces === true
-                ? "/images/successSign.png"
-                : "/images/warningSign.png"
-            }
-            alt="warning icon"
-            text={
-              isSucces === true
-                ? "Email sent successfully"
-                : "Email not sent try again later!"
-            }
-          />
+          {isLoading && (
+            <Image src="/images/warningSign.png" alt="" text="Loading..." />
+          )}
+          {!isLoading && (
+            <Image
+              src={
+                isSucces === true
+                  ? "/images/successSign.png"
+                  : "/images/warningSign.png"
+              }
+              alt="warning icon"
+              text={
+                isSucces === true
+                  ? "Email sent successfully"
+                  : "Email not sent try again later!"
+              }
+            />
+          )}
         </NoHover>
       </InfoBoxContent>
     </FolderWrapper>

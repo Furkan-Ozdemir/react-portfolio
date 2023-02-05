@@ -43,13 +43,7 @@ const Resume = (props) => {
       id="resume"
       onClick={handleHighlight}
       onDoubleClick={() =>
-        openInNewTab(
-          "http://localhost:3000/images/cv_image.png",
-          600,
-          800,
-          200,
-          200
-        )
+        openInNewTab("/images/cv_image.png", 600, 800, 200, 200)
       }
       onContextMenu={(e) => setIsResume(e.currentTarget.id === "resume")}
     >

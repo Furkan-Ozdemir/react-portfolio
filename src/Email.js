@@ -16,6 +16,7 @@ const Email = (props) => {
   const { locationData } = props;
   const [isEmailSent, setIsEmailSent] = useState(false);
   const [infoBoxVisible, setInfoBoxVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleFontFamily = (e) => {
     setFontFamily(e.currentTarget.value);
@@ -43,6 +44,7 @@ const Email = (props) => {
       setIsEmailSent(false);
       return;
     }
+    setLoading(true);
     const response = await fetch(
       `https://api.jotform.com/form/230354920382957/submissions?apiKey=${process.env.REACT_APP_API_KEY}`,
       {
@@ -71,11 +73,19 @@ const Email = (props) => {
     );
     setIsEmailSent(response.status === 200);
     const valuesCleared = response.status === 200 ? resetValues() : false;
+    setLoading(false);
     setInfoBoxVisible(true);
   };
 
   return (
     <FolderWrapper id="email">
+      {loading && (
+        <InfoBox
+          setInfoBoxVisible={setInfoBoxVisible}
+          isSucces={isEmailSent}
+          isLoading={loading}
+        />
+      )}
       {infoBoxVisible && (
         <InfoBox setInfoBoxVisible={setInfoBoxVisible} isSucces={isEmailSent} />
       )}

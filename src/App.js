@@ -6,6 +6,9 @@ import MyProjects from "./MyProjects";
 import ContextMenu from "./ContextMenu";
 import Folder from "./Folder";
 import Email from "./Email";
+import Trash from "./Trash";
+import styled from "styled-components";
+import "@christianliebel/paint";
 
 const App = () => {
   const [xPos, setXPos] = useState("");
@@ -40,6 +43,8 @@ const App = () => {
   };
   const showFolder = () =>
     (document.getElementById("folder").style.display = "block");
+  const showTrash = () =>
+    (document.getElementById("trashFolder").style.display = "block");
 
   const getLocationData = async () => {
     try {
@@ -56,15 +61,54 @@ const App = () => {
         e.preventDefault();
       }}
     >
+      <div
+        style={{
+          display: "none",
+          position: "absolute",
+          zIndex: 999,
+          width: "75%",
+        }}
+        id="paint"
+      >
+        <TitleBar>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <img
+              style={{ height: "25px", margin: "4px" }}
+              src="/images/paint.png"
+              alt="trash icon"
+            />
+            <span style={{ color: "#fff", paddingLeft: "5px" }}>Paint</span>
+          </div>
+          <img
+            style={{
+              cursor: "pointer",
+              border: "1px solid #fff",
+              borderRadius: "50%",
+            }}
+            src="/images/closeIcon.png"
+            alt="close icon"
+            onClick={() =>
+              (document.getElementById("paint").style.display = "none")
+            }
+          />
+        </TitleBar>
+        <paint-app />
+      </div>
+
       <Email locationData={locationData} setIsResume={setIsResume} />
       <Folder setIsResume={setIsResume} />
       <Resume openInNewTab={openInNewTab} setIsResume={setIsResume} />
-      <RecycleBin openInNewTab={openInNewTab} setIsResume={setIsResume} />
+      <RecycleBin
+        showTrash={showTrash}
+        openInNewTab={openInNewTab}
+        setIsResume={setIsResume}
+      />
       <MyProjects
         showFolder={showFolder}
         openInNewTab={openInNewTab}
         setIsResume={setIsResume}
       />
+      <Trash />
       <Bar openInNewTab={openInNewTab} />
       {showContextMenu && (
         <ContextMenu isResume={isResume} xPos={xPos} yPos={yPos} />
@@ -72,5 +116,12 @@ const App = () => {
     </div>
   );
 };
-
+const TitleBar = styled.div`
+  height: 30px;
+  background-color: #005bf2;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 5px;
+  margin-bottom: -3px;
+`;
 export default App;

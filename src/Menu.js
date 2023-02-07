@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import Image from "./Image";
 
 const Menu = (props) => {
@@ -43,18 +44,30 @@ const Menu = (props) => {
             <Image src="/images/email.png" alt="email" text="E-mail" />
           </div>
           <hr />
-          <Image
-            src="/images/mediaplayer.png"
-            alt="media player"
-            text="Windows Media Player"
-          />
-          <Image src="/images/paint.png" alt="paint" text="Paint" />
+          <Disabled>
+            <Image
+              src="/images/mediaplayer.png"
+              alt="media player"
+              text="Windows Media Player"
+            />
+          </Disabled>
+          <div
+            onClick={() => {
+              document.getElementById("paint").style.display = "block";
+              document.getElementsByTagName("paint-app")[0].style.width =
+                "100%";
+              document.getElementsByTagName("paint-app")[0].style.height =
+                "900px";
+            }}
+          >
+            <Image src="/images/paint.png" alt="paint" text="Paint" />
+          </div>
         </div>
         <div
           id="verticalLine"
           style={{ borderLeft: "3px solid #b3cff5" }}
         ></div>
-        <div style={{ backgroundColor: "#b3cff5" }}>
+        <Disabled style={{ backgroundColor: "#b3cff5" }}>
           <Image
             src="/images/mycomputer.png"
             alt="My computer"
@@ -78,7 +91,7 @@ const Menu = (props) => {
             alt="minesweeper"
             text="Windows Minesweeper"
           />
-        </div>
+        </Disabled>
       </div>
       <div
         style={{
@@ -98,4 +111,10 @@ const Menu = (props) => {
   );
 };
 
+// remove this after implementing the disabled menu items
+const Disabled = styled.div`
+  & > * {
+    cursor: not-allowed;
+  }
+`;
 export default Menu;

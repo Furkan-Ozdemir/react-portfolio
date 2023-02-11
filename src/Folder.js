@@ -262,8 +262,8 @@ const Folder = (props) => {
         <WhiteSpace>
           <ProjectItem
             setIsResume={setIsResume}
-            projectName="Recrute.It"
-            repoName="recrute.it"
+            projectName="Recruit.It"
+            repoName="react-recruit-it"
             id="recrute"
           />
           <ProjectItem

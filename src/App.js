@@ -16,7 +16,11 @@ const App = () => {
   const [showContextMenu, setShowContextMenu] = useState(false);
   const [isResume, setIsResume] = useState(false); // TODO isDownloadable refactor later
   const [locationData, setLocationData] = useState({});
+  const [isMobile, setIsMobile] = useState(false);
 
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 1024);
+  }, []);
   useEffect(() => {
     getLocationData();
   }, []);
@@ -53,6 +57,14 @@ const App = () => {
       setLocationData(data);
     } catch (error) {}
   };
+
+  if (isMobile) {
+    return (
+      <p style={{ color: "tomato", textAlign: "center", fontSize: "2em" }}>
+        Mobile version is not ready plz view it on a computer :d
+      </p>
+    );
+  }
 
   return (
     <div

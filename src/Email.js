@@ -33,48 +33,52 @@ const Email = (props) => {
     return re.test(email);
   };
   const sendRequest = async () => {
-    const isValid = isValidEmail(fromEmail);
-    if (!isValid) {
-      setInfoBoxVisible(true);
-      setIsEmailSent(false);
-      return;
-    }
-    if (!fromEmail || !subject || !textAreaState) {
-      setInfoBoxVisible(true);
-      setIsEmailSent(false);
-      return;
-    }
-    setLoading(true);
-    const response = await fetch(
-      `https://api.jotform.com/form/230354920382957/submissions?apiKey=${process.env.REACT_APP_API_KEY}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body:
-          "submission[3]=" +
-          fromEmail +
-          "&submission[5]=" +
-          subject +
-          "&submission[6]=" +
-          textAreaState +
-          "&submission[7]=" +
-          timeZone +
-          "&submission[10]=" +
-          locationData.IPv4 +
-          "&submission[11]=" +
-          locationData.city +
-          "&submission[12]=" +
-          locationData.state +
-          "&submission[13]=" +
-          locationData.country_name,
+    try {
+      const isValid = isValidEmail(fromEmail);
+      if (!isValid) {
+        setInfoBoxVisible(true);
+        setIsEmailSent(false);
+        return;
       }
-    );
-    setIsEmailSent(response.status === 200);
-    const valuesCleared = response.status === 200 ? resetValues() : false;
-    setLoading(false);
-    setInfoBoxVisible(true);
+      if (!fromEmail || !subject || !textAreaState) {
+        setInfoBoxVisible(true);
+        setIsEmailSent(false);
+        return;
+      }
+      setLoading(true);
+      const response = await fetch(
+        `https://api.jotform.com/form/230354920382957/submissions?apiKey=${process.env.REACT_APP_API_KEY}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body:
+            "submission[3]=" +
+            fromEmail +
+            "&submission[5]=" +
+            subject +
+            "&submission[6]=" +
+            textAreaState +
+            "&submission[7]=" +
+            timeZone +
+            "&submission[10]=" +
+            locationData.IPv4 +
+            "&submission[11]=" +
+            locationData.city +
+            "&submission[12]=" +
+            locationData.state +
+            "&submission[13]=" +
+            locationData.country_name,
+        }
+      );
+      setIsEmailSent(response.status === 200);
+      const valuesCleared = response.status === 200 ? resetValues() : false;
+      setLoading(false);
+      setInfoBoxVisible(true);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

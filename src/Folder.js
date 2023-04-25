@@ -285,6 +285,12 @@ const Folder = (props) => {
             repoName="dynamic-programming"
             id="dynamicProgramming"
           />
+          <ProjectItem
+            setIsResume={setIsResume}
+            projectName="Uber Clone"
+            repoName="uber-clone"
+            id="uber-clone"
+          />
         </WhiteSpace>
       </MainWrapper>
     </FolderWrapper>

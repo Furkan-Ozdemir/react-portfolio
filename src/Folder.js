@@ -347,7 +347,7 @@ const NavigationBar = styled.div`
   }
   .navigation_bar_img:hover ~ span {
     background-color: #275199;
-    color: #fff;
+    color: #ffffff;
   }
   .navigation_bar_img + span:hover {
     background-color: #275199;

@@ -58,13 +58,13 @@ const App = () => {
     } catch (error) {}
   };
 
-  if (isMobile) {
-    return (
-      <p style={{ color: "tomato", textAlign: "center", fontSize: "2em" }}>
-        Mobile version is not ready plz view it on a computer :d
-      </p>
-    );
-  }
+  // if (isMobile) {
+  //   return (
+  //     <p style={{ color: "tomato", textAlign: "center", fontSize: "2em" }}>
+  //       Mobile version is not ready plz view it on a computer :d
+  //     </p>
+  //   );
+  // }
 
   return (
     <div

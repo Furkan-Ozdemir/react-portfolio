@@ -8,7 +8,7 @@ const ContextMenuItem = ({ isResume }) => {
       <UnorderedList>
         {isResume && (
           <UnorderedListItem>
-            <a href="/images/Furkan_Resume.pdf" download>
+            <a href="/images/Furkan_Ozdemir_resume.pdf" download>
               Download
             </a>
           </UnorderedListItem>

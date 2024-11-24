@@ -47,7 +47,7 @@ const Email = (props) => {
       }
       setLoading(true);
       const response = await fetch(
-        `https://api.jotform.com/form/230354920382957/submissions?apiKey=${process.env.REACT_APP_API_KEY}`,
+        `https://api.jotform.com/form/230353472302041/submissions?apiKey=${process.env.REACT_APP_API_KEY}`,
         {
           method: "POST",
           headers: {

@@ -291,6 +291,18 @@ const Folder = (props) => {
             repoName="uber-clone"
             id="uber-clone"
           />
+          <ProjectItem
+            setIsResume={setIsResume}
+            projectName="MVST Jobs"
+            repoName="jobFinder"
+            id="jobFinder"
+          />
+          <ProjectItem
+            setIsResume={setIsResume}
+            projectName="Jobbly"
+            repoName="jobbly"
+            id="jobbly"
+          />
         </WhiteSpace>
       </MainWrapper>
     </FolderWrapper>
